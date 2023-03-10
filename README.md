@@ -11,12 +11,17 @@ This repository contains a Dockerfile to build a Docker image for PX4 developmen
 
 ## Build the Docker Image
 
-Clone this repository and build the Docker image:
+Clone this repository:
 
 ```bash
 git clone https://github.com/joshuadamanik/px4_gzweb.git --recursive
 cd px4_gzweb
-docker build -t px4_gzweb:latest Dockerfile-<arch>
+```
+
+Build the Docker image and run the container:
+
+```bash
+docker build -t px4_gzweb:latest -f Dockerfile-<arch> .
 docker run -it --rm --name px4_gzweb
     -v src/PX4-Autopilot:/root/PX4-Autopilot
     -v src/ws_commander:/root/ws_commander

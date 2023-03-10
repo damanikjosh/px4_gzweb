@@ -15,6 +15,10 @@ RUN apt-get update && apt-get install -y \
     mercurial \
     cmake \
     wget \
+    curl \
+    gnupg2 \
+    sudo \
+    lsb-release \
     && rm -rf /var/lib/apt/lists/*
 
 # Install PX4 dependencies
@@ -23,10 +27,6 @@ RUN /root/setup/ubuntu.sh --no-nuttx \
     && rm -r /root/setup
 
 # Install ROS2 Foxy
-RUN apt-get update && apt-get install -y \
-    curl gnupg2 lsb-release \
-    && rm -rf /var/lib/apt/lists/*
-
 RUN curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
 RUN echo "deb [arch=arm64] http://packages.ros.org/ros2/ubuntu focal main" > /etc/apt/sources.list.d/ros2-latest.list
 
